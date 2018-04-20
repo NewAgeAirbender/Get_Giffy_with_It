@@ -1,7 +1,5 @@
-
-
-//empty array to hold strings
-var cirqueActs = [];
+// array to hold strings
+var cirqueActs = ["trapeze", "cyr", "juggling", "acrobats", "clowns", "contortion", "contact juggling"];
 
 //function displays buttons of the strings in cirqueActs
 function renderButtons() {
@@ -50,7 +48,11 @@ function displayGIF() {
             var p = $("<p>").text("Rating: " + rating);
 
             var actGIF = $("<img>");
-            actGIF.attr("src", results[j].images.fixed_height.url);
+            actGIF.attr("data-still", results[j].images.fixed_height_still.url);
+            actGIF.attr("data-animate", results[j].images.fixed_height.url);
+            actGIF.attr("src", results[j].images.fixed_height_still.url);
+            actGIF.attr("data-state", "still");
+            actGIF.attr("class", "gif");
 
             actDiv.append(p);
             actDiv.prepend(actGIF);
@@ -62,6 +64,22 @@ function displayGIF() {
 
 }
 
+$(document).on("click", ".gif", changeState);
+//wasn't working as a $(".gif").on('click', function()) but this works
+function changeState() {
+
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+}
+
+//pulls the gifs and displays them once the button is clicked
 $(document).on("click", ".act", displayGIF);
 
 renderButtons();
