@@ -1,0 +1,12 @@
+button {
+    background-color: royalblue;
+    color: white;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.tile {
+    display: inline-block;
+    margin: 5px;
+}
