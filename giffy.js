@@ -31,7 +31,7 @@ $("#addAct").on("click", function (event) {
 //function pulls gifs from the api and pushes to html
 function displayGIF() {
     var act = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + act + "&api_key=ePxTMTlzc9y6QL3VenZa9Rx1CxU2D744&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + act + "&api_key=ePxTMTlzc9y6QL3VenZa9Rx1CxU2D744&limit=10";
 
     // Creates AJAX call for the specific act button being clicked
     $.ajax({
